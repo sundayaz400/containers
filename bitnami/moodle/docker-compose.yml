@@ -7,7 +7,7 @@ services:
     image: docker.io/bitnami/mariadb:10.6
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      - ALLOW_EMPTY_PASSWORD=yes
+      - ALLOW_EMPTY_PASSWORD=yno
       - MARIADB_USER=bn_moodle
       - MARIADB_DATABASE=bitnami_moodle
       - MARIADB_CHARACTER_SET=utf8mb4
@@ -25,7 +25,7 @@ services:
       - MOODLE_DATABASE_USER=bn_moodle
       - MOODLE_DATABASE_NAME=bitnami_moodle
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      - ALLOW_EMPTY_PASSWORD=yes
+      - ALLOW_EMPTY_PASSWORD=no
     volumes:
       - /path/to/moodle-persistence:/bitnami/moodle
       - 'moodledata_data:/bitnami/moodledata'
