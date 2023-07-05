@@ -6,9 +6,9 @@ docker --version
 sudo usermod -aG docker $USER
 sudo docker run hello-world
 sudo docker pull bitnami/moodle:latest
-***curl -sSL https://raw.githubusercontent.com/sundayaz400/containers/main/bitnami/moodle/docker-compose.yml > docker-compose.yml  *** edit the credentials in your docker-compose file**
-sudo apt install docker-compose
-sudo docker-compose up -d
+##***curl -sSL https://raw.githubusercontent.com/sundayaz400/containers/main/bitnami/moodle/docker-compose.yml > docker-compose.yml  *** edit the credentials in your docker-compose file**
+**sudo apt install docker-compose
+**sudo docker-compose up -d
 sudo docker network create moodle-network
 sudo docker volume create --name mariadb_data
 sudo docker volume create --name moodle_data
