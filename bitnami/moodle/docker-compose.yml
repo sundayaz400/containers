@@ -27,6 +27,11 @@ services:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=no
       - MOODLE_PASSWORD=xxxxxxx
+      - MOODLE_SMTP_HOST=smtp.gmail.com
+      - MOODLE_SMTP_PORT=587
+      - MOODLE_SMTP_USER=yourgmail@gmail.com
+      - MOODLE_SMTP_PASSWORD=your_password
+      - MOODLE_SMTP_PROTOCOL=tls
     volumes:
       - /path/to/moodle-persistence:/bitnami/moodle
       - 'moodledata_data:/bitnami/moodledata'
