@@ -1,0 +1,47 @@
+### Install docker
+sudo apt update && sudo apt upgrade -y
+sudo apt install docker.io -y
+sudo systemctl start docker &&  sudo systemctl enable docker
+docker --version
+sudo usermod -aG docker $USER
+sudo docker run hello-world
+sudo docker pull bitnami/moodle:latest
+***curl -sSL https://raw.githubusercontent.com/sundayaz400/containers/main/bitnami/moodle/docker-compose.yml > docker-compose.yml  *** edit the credentials in your docker-compose file**
+sudo apt-install docker-compose
+sudo docker-compose up -d
+sudo docker network create moodle-network
+sudo docker volume create --name mariadb_data
+sudo docker volume create --name moodle_data
+sudo mkdir /bitnami/moodle
+sudo mkdir /bitnami/mariadb
+sudo docker run --name mariadb -e MARIADB_ROOT_PASSWORD=xxxxxxxxxx bitnami/mariadb:latest
+
+docker run -d --name mariadb \
+  --env ALLOW_EMPTY_PASSWORD=no \
+  --env MARIADB_USER=xxxxxxx \
+  --env MARIADB_PASSWORD=xxxxxxxx \
+  --env MARIADB_DATABASE=bitnami_moodle \
+  --network moodle-network \
+  --volume /path/to/mariadb-persistence:/bitnami/mariadb \
+  bitnami/mariadb:latest
+
+docker run -d --name moodle \
+  -p 8080:8080 -p 8443:8443 \
+  --env ALLOW_EMPTY_PASSWORD=no \
+  --env MOODLE_DATABASE_USER=xxxxxxx \
+  --env MOODLE_DATABASE_PASSWORD=xxxxx \
+  --env MOODLE_DATABASE_NAME=bitnami_moodle \
+  --env MOODLE_PASSWORD=xxxxxx \
+  --env MOODLE_SMTP_HOST=smtp.gmail.com \
+  --env MOODLE_SMTP_PORT=587 \
+  --env MOODLE_SMTP_USER=your_email@gmail.com \
+  --env MOODLE_SMTP_PASSWORD=your_password \
+  --env MOODLE_SMTP_PROTOCOL=tls \
+  --network moodle-network \
+  --volume /path/to/moodle-persistence:/bitnami/moodle \
+  bitnami/moodle:latest
+
+
+  docker logs moodle
+
+  ## https://hub.docker.com/r/bitnami/moodle
