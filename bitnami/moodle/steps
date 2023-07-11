@@ -1,5 +1,5 @@
 ### Install docker
-sudo apt update && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y && sudo apt install docker.io -y && sudo systemctl start docker &&  sudo systemctl enable docker && docker --version && sudo usermod -aG docker $USER
 sudo apt install docker.io -y
 sudo systemctl start docker &&  sudo systemctl enable docker
 docker --version
@@ -9,10 +9,10 @@ sudo docker pull bitnami/moodle:latest
 ##***curl -sSL https://raw.githubusercontent.com/sundayaz400/containers/main/bitnami/moodle/docker-compose.yml > docker-compose.yml  *** edit the credentials in your docker-compose file**
 **sudo apt install docker-compose
 **sudo docker-compose up -d
-sudo docker network create moodle-network
+sudo docker network create moodle-network && sudo docker volume create --name mariadb_data && sudo docker volume create --name moodle_data && sudo mkdir /bitnami && sudo mkdir /bitnami/moodle && sudo mkdir /bitnami/mariadb
 sudo docker volume create --name mariadb_data
 sudo docker volume create --name moodle_data
-sudo mkdir /bitnami && sudo mkdir /bitnami/moodle
+sudo mkdir /bitnami && sudo mkdir /bitnami/moodle && sudo mkdir /bitnami/mariadb
 sudo mkdir /bitnami/mariadb
 sudo docker run --name mariadb -e MARIADB_ROOT_PASSWORD=xxxxxxxxxx bitnami/mariadb:latest
 
